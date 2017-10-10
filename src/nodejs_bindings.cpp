@@ -49,7 +49,7 @@ NAN_METHOD(Annotator::New)
             }
             else
             {
-                return Nan::ThrowSyntaxError("Coordinates value should be a boolean");
+                return Nan::ThrowTypeError("Coordinates value should be a boolean");
             }
         }
     }
@@ -272,7 +272,6 @@ NAN_METHOD(Annotator::annotateRouteFromLonLats)
             }
             catch (const RouteAnnotator::RtreeError &e)
             {
-                std::cerr << e.what() << std::endl;
                 return SetErrorMessage("Annotator not created with coordinates support");
             }
             catch (const std::exception &e)
